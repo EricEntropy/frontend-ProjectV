@@ -18,7 +18,10 @@ class Login extends React.Component{
                     name="password"
                     placeholder="Password"/>
                 </div>
-                <input type="submit" value="Login"/>
+                <input 
+                type="submit" 
+                onSubmit={this.handleSubmit}
+                value="Login"/>
             </form>
         );
     }
