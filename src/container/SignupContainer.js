@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
+import Signup from "../components/Signup"
 
-class MainContainer extends Component{
+class SignupContainer extends Component{
 
-    redner(){
+    render(){
         return(
-            <di>
-                <form>
-                    YOUR PROFILE
-                </form>
-            </di>
+            <div>
+                <Signup/>
+            </div>
         )
     }
 }
 
-export default MainContainer;
+export default SignupContainer;

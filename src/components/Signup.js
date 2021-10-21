@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router";
-import MainContainer from '../container/MainContainer'
 
 class Signup extends React.Component{
 
     state = {
+        signedup: false,
         user: "",
         username: "",
         password: ""
@@ -35,6 +35,7 @@ class Signup extends React.Component{
 
     setUser = (data) =>{
         this.setState({
+            signedup: true,
             user: data.user
         });        
     }
@@ -46,30 +47,34 @@ class Signup extends React.Component{
       }
 
     render(){
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <h1>Sign Up!</h1>
-                <div>
+        if(this.state.signedup){
+            return <Redirect to="/" />;
+        } else{
+            return(
+                <form onSubmit={this.handleSubmit}>
+                    <h1>Sign Up!</h1>
+                    <div>
+                        <input 
+                        type="text"
+                        id="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        placeholder="Username"/>
+                    </div>
+                    <div>
+                        <input 
+                        type="password"
+                        id="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        placeholder="Password"/>
+                    </div>
                     <input 
-                    type="text"
-                    id="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                    placeholder="Username"/>
-                </div>
-                <div>
-                    <input 
-                    type="password"
-                    id="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    placeholder="Password"/>
-                </div>
-                <input 
-                type="submit"
-                value="Signup"/>
-            </form>
-        );
+                    type="submit"
+                    value="Signup"/>
+                </form>
+            );
+        }
     }
 }
 
