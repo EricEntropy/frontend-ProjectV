@@ -1,8 +1,11 @@
 import React from "react";
+import { Redirect } from "react-router";
+import MainContainer from '../container/MainContainer'
 
 class Signup extends React.Component{
 
     state = {
+        user: "",
         username: "",
         password: ""
       }
@@ -23,6 +26,17 @@ class Signup extends React.Component{
             body: JSON.stringify(data)
         };
         fetch("http://localhost:4000/users", configuration)
+        .then((resp) => resp.json())
+        .then((response) => {
+            localStorage.setItem("jwt", response.jwt);
+            this.setUser(response)
+        });
+    }
+
+    setUser = (data) =>{
+        this.setState({
+            user: data.user
+        });        
     }
 
     handleChange = event => {
