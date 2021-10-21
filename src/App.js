@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import Home from "./components/Home";
 import Login from "./components/Login"
 import Navbar from "./components/Navbar"
 import SignupContainer from './container/SignupContainer';
+import HomeContainer from './container/HomeContainer';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
+    console.log(this.props.user);
+    console.log(this.props.signedup);
+
     return (
     <Router>
       <div>
         <Navbar/>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomeContainer} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignupContainer} />
       </div>
@@ -20,4 +24,11 @@ class App extends Component {
   }
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return{
+    user: state.user,
+    signedup: state.signedup
+  };
+};
+
+export default connect(mapStateToProps)(App);
