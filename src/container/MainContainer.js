@@ -5,9 +5,6 @@ class MainContainer extends Component{
     redner(){
         return(
             <di>
-                <form>
-                    YOUR PROFILE
-                </form>
             </di>
         )
     }

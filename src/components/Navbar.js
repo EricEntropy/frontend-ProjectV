@@ -12,33 +12,33 @@ const link = {
 
 class Navbar extends React.Component{
     render(){
-        return(
-            <div>
-                <NavLink
-                to="/"
-                exact
-                style={link}
-                activeStyle={{background: "red"}}>
-                    Home
-                </NavLink>
+            return(
+                <div>
+                    <NavLink
+                    to="/"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                        Home
+                    </NavLink>
 
-                <NavLink
-                to="/login"
-                exact
-                style={link}
-                activeStyle={{background: "red"}}>
-                Log In
-                </NavLink>
+                    <NavLink
+                    to="/login"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                    Log In
+                    </NavLink>
 
-                <NavLink
-                to="/signup"
-                exact
-                style={link}
-                activeStyle={{background: "red"}}>
-                Sign Up
-                </NavLink>
-            </div>
-        );
+                    <NavLink
+                    to="/signup"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                    Sign Up
+                    </NavLink>
+                </div>
+            );
     }
 }
 

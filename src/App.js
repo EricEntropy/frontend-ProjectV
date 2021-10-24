@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from "./components/Login"
+import LoginContainer from "./container/LoginContainer"
 import Navbar from "./components/Navbar"
 import SignupContainer from './container/SignupContainer';
 import HomeContainer from './container/HomeContainer';
@@ -15,8 +15,8 @@ class App extends Component {
     <Router>
       <div>
         <Navbar/>
-        <Route exact path="/" component={HomeContainer} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={HomeContainer } />
+        <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/signup" component={SignupContainer} />
       </div>
     </Router>
