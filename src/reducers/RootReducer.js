@@ -2,7 +2,7 @@ const RootReducer = (
     state = {
         loading: false,
         signedup: false,
-        user: "",
+        user: 0,
     }, action) => {
     
     switch(action.type){

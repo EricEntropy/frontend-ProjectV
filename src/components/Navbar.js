@@ -12,16 +12,9 @@ const link = {
 
 class Navbar extends React.Component{
     render(){
+        if(this.props.signedup === false){
             return(
                 <div>
-                    <NavLink
-                    to="/"
-                    exact
-                    style={link}
-                    activeStyle={{background: "red"}}>
-                        Home
-                    </NavLink>
-
                     <NavLink
                     to="/login"
                     exact
@@ -38,7 +31,28 @@ class Navbar extends React.Component{
                     Sign Up
                     </NavLink>
                 </div>
+            )
+        }else{
+            return(
+                <div>
+                    <NavLink
+                    to="/"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                        Home
+                    </NavLink>
+
+                    <NavLink
+                    to="/logout"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                    Log Out
+                    </NavLink>
+                </div>
             );
+        }
     }
 }
 
