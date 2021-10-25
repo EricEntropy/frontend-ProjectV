@@ -31,7 +31,7 @@ class Posts extends React.Component {
 
     render() {
         if(this.props.postSuccess && this.state.redirect){
-            return <Redirect to="/post"  />;
+            return <Redirect to="/post" />;
         } else{
         return (
             <form onSubmit={this.handleSubmit}>
@@ -63,7 +63,8 @@ const mapStateToProps = (state) => {
     return{
       user: state.user,
       signedup: state.signedup,
-      postSuccess: state.postSuccess
+      postSuccess: state.postSuccess,
+      posts: state.posts
     };
   };
 

@@ -20,7 +20,7 @@ class App extends Component {
         <Router>
           <div>
             <Navbar signedup={this.props.signedup}/>
-            <Route exact path="/post" component={Post} posts={this.props.posts}/>
+            <Route exact path="/post" render={() => <Post posts={this.props.posts}/>}/>
             <Route exact path="/" component={HomeContainer } />
             <Route exact path="/login" component={LoginContainer} />
             <Route exact path="/signup" component={SignupContainer} />

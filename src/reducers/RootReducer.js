@@ -46,7 +46,6 @@ const RootReducer = (
                 title: action.post.title,
                 content: action.post.content
             };
-            debugger
             return{
                 ...state,
                 postSuccess: true,
