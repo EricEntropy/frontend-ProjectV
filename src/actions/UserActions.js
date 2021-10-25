@@ -1,3 +1,4 @@
+
 export const userActions = (data) =>{
     return (dispatch) =>{
         dispatch({type: "LOADING_USER"});
@@ -36,9 +37,18 @@ export const userLogin = (data) =>{
         fetch("http://localhost:4000/login", configuration)
         .then((resp) => resp.json())
         .then((response) => {
-            debugger
+            
             localStorage.setItem("jwt", response.jwt);
             dispatch({type: "ADD_USER", user: response.user})
         });
     };
 };
+
+
+export const userLogout = () =>{
+    return (dispatch) =>{
+        console.log('loggin out')
+        localStorage.clear();
+        dispatch({type: "LOGOUT_USER"});
+    }
+}

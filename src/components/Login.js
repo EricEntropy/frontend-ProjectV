@@ -1,6 +1,7 @@
 import React from "react";
 import { userLogin } from "../actions/UserActions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 class Login extends React.Component{
     state = {
@@ -26,7 +27,7 @@ class Login extends React.Component{
 
     render(){
         if(this.props.signedup){
-            return <h1>Loged in</h1>;
+            return <Redirect to="/" />;
         } else{
         return(
             <form onSubmit={this.handleSubmit}>

@@ -1,25 +1,35 @@
 import React from "react";
+import { userLogout } from "../actions/UserActions";
+import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 class Logout extends React.Component{
 
     handleSubmit= (e) =>{
         e.preventDefault();
-        localStorage.clear();
-        this.props.signedup = false;
+        this.props.userLogout();
     }
+    
 
     render(){
-        
+        if(this.props.signedup){
+            return <Redirect to="/login" />;
+        } else{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <h1>Log Out</h1>
-                    <input type="submit" value="Logout"></input>
+                    <h2>Goodbye!</h2>
+                    <input type="submit" value='Log out'/>
                 </form>
             </div>
         )
     }
-
+    }
 }
 
-export default Logout;
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        userLogout: () => dispatch(userLogout()),
+    };
+};
+export default connect(null, mapDispatchToProps)(Logout);

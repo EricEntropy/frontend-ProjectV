@@ -22,6 +22,9 @@ const RootReducer = (
                 signedup: true,
                 user: action.user
             };
+
+        case "LOGOUT_USER":
+            return state;
     };
 };
 
