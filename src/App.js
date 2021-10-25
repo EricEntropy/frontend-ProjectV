@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Logout from "./components/Logout"
 import Welcome from "./components/Welcome"
+import Post from './components/Post';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Welcome/>
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/signup" component={SignupContainer} />
+          <Route exact path="/post" component={Post} />
         </div>
         </Router>
       )
@@ -43,7 +45,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return{
     user: state.user,
-    signedup: state.signedup
+    signedup: state.signedup,
+    postSuccess: state.postSuccess
   };
 };
 

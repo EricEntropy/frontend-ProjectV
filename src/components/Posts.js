@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { userPost } from "../actions/UserActions";
+import { Redirect } from "react-router";
 
 class Posts extends React.Component {
     state = {
@@ -10,37 +12,14 @@ class Posts extends React.Component {
     handleSubmit =(event) =>{
         event.preventDefault();
         const data = {
+            user_id: this.props.user.id,
             post: {
                 title: this.state.title,
                 content: this.state.content
         }};
-        this.submitPost(data);
+        this.props.userPost(data);
+        event.target.reset();
     };
-
-    submitPost = (data) =>{
-        const token = localStorage.getItem("jwt");
-
-        const configuration = {
-            method: 'POST', 
-            headers: {
-                'Content-Type': "application/json",
-                'Accept': "application/json",
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(data)
-        };
-        
-        fetch(`http://localhost:4000/users/1/posts`, configuration)
-        .then((resp) => resp.json())
-        .then((response) => {
-            return(
-                <div>
-                    {response.title}
-                    {response.content}
-                </div>
-            )
-        });
-    }
 
     handleChange = event => {
         this.setState({
@@ -49,6 +28,9 @@ class Posts extends React.Component {
     };
 
     render() {
+        if(this.props.postSuccess){
+            return <Redirect to="/post" title={this.state.title} content={this.state.content} />;
+        } else{
         return (
             <form onSubmit={this.handleSubmit}>
                     <h1>New post</h1>
@@ -71,6 +53,7 @@ class Posts extends React.Component {
                     value="Create Post"/>
                 </form>
         );
+        }
     }
 }
 
@@ -78,7 +61,14 @@ const mapStateToProps = (state) => {
     return{
       user: state.user,
       signedup: state.signedup,
+      postSuccess: state.postSuccess
     };
   };
 
-export default connect(mapStateToProps)(Posts);
+  const mapDispatchToProps = (dispatch) =>{
+    return{
+        userPost: (data) => dispatch(userPost(data)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

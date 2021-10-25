@@ -56,3 +56,26 @@ export const userLogout = () =>{
         dispatch({type: "LOGOUT_USER"});
     }
 }
+
+export const userPost = (postData) =>{
+    return (dispatch) =>{
+
+        const token = localStorage.getItem("jwt");
+        const configuration = {
+            method: 'POST', 
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(postData.post)
+        };
+        
+        fetch(`http://localhost:4000/users/${postData.user_id}/posts`, configuration)
+        .then((resp) => resp.json())
+        .then((response) => {
+            debugger
+            dispatch({type: "ADD_POST"})
+        })
+    };
+}

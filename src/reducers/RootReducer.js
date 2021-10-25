@@ -3,6 +3,8 @@ const RootReducer = (
         loading: false,
         signedup: false,
         user: 0,
+        posts: [],
+        postSuccess: false,
         token: localStorage.jwt,
         failedlogin: false,
     }, action) => {
@@ -38,6 +40,13 @@ const RootReducer = (
                 ...state,
                 signedup: false,
             }
+        
+        case "ADD_POST":
+            debugger
+            return{
+                ...state,
+                postSuccess: true,
+            };
     };
 };
 
