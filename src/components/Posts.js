@@ -6,7 +6,8 @@ import { Redirect } from "react-router";
 class Posts extends React.Component {
     state = {
         title: "",
-        content: ""
+        content: "",
+        redirect: false
     }
 
     handleSubmit =(event) =>{
@@ -18,6 +19,7 @@ class Posts extends React.Component {
                 content: this.state.content
         }};
         this.props.userPost(data);
+        this.setState({ redirect: true})
         event.target.reset();
     };
 
@@ -28,8 +30,8 @@ class Posts extends React.Component {
     };
 
     render() {
-        if(this.props.postSuccess){
-            return <Redirect to="/post" title={this.state.title} content={this.state.content} />;
+        if(this.props.postSuccess && this.state.redirect){
+            return <Redirect to="/post"  />;
         } else{
         return (
             <form onSubmit={this.handleSubmit}>

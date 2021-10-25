@@ -42,10 +42,15 @@ const RootReducer = (
             }
         
         case "ADD_POST":
+            const post = {
+                title: action.post.title,
+                content: action.post.content
+            };
             debugger
             return{
                 ...state,
                 postSuccess: true,
+                posts: [...state.posts, post]
             };
     };
 };

@@ -32,7 +32,7 @@ class Navbar extends React.Component{
                     </NavLink>
                 </div>
             )
-        }else{
+        }else if (localStorage.jwt && this.props.signedup === true){
             return(
                 <div>
                     <NavLink

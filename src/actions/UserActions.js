@@ -74,8 +74,7 @@ export const userPost = (postData) =>{
         fetch(`http://localhost:4000/users/${postData.user_id}/posts`, configuration)
         .then((resp) => resp.json())
         .then((response) => {
-            debugger
-            dispatch({type: "ADD_POST"})
+            dispatch({type: "ADD_POST", post: response})
         })
     };
 }

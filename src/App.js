@@ -9,28 +9,18 @@ import Logout from "./components/Logout"
 import Welcome from "./components/Welcome"
 import Post from './components/Post';
 
+
 class App extends Component {
   render() {
-    console.log(this.props.user);
+    console.log(this.props.posts);
     console.log(this.props.signedup);
 
-    if(this.props.signedup === false ){
-      return(
-        <Router>
-        <div>
-          <Navbar signedup={this.props.signedup}/>
-          <Welcome/>
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/signup" component={SignupContainer} />
-          <Route exact path="/post" component={Post} />
-        </div>
-        </Router>
-      )
-    } else {
+    if (localStorage.jwt && this.props.signedup === true){
       return (
         <Router>
           <div>
             <Navbar signedup={this.props.signedup}/>
+            <Route exact path="/post" component={Post} posts={this.props.posts}/>
             <Route exact path="/" component={HomeContainer } />
             <Route exact path="/login" component={LoginContainer} />
             <Route exact path="/signup" component={SignupContainer} />
@@ -38,7 +28,18 @@ class App extends Component {
           </div>
           </Router>
       );
-    }
+    } else if(this.props.signedup === false ){
+      return(
+        <Router>
+        <div>
+          <Navbar signedup={this.props.signedup}/>
+          <Welcome/>
+          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/signup" component={SignupContainer} />
+        </div>
+        </Router>
+      )
+    } 
   }
 };
 
@@ -46,7 +47,8 @@ const mapStateToProps = (state) => {
   return{
     user: state.user,
     signedup: state.signedup,
-    postSuccess: state.postSuccess
+    postSuccess: state.postSuccess,
+    posts: state.posts
   };
 };
 
