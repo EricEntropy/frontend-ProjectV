@@ -38,8 +38,13 @@ export const userLogin = (data) =>{
         .then((resp) => resp.json())
         .then((response) => {
             
-            localStorage.setItem("jwt", response.jwt);
-            dispatch({type: "ADD_USER", user: response.user})
+            if(response.message === "Invalid username or password"){
+                window.alert(response.message);
+                dispatch({type: "FAILED_USER"})
+            } else{
+                localStorage.setItem("jwt", response.jwt);
+                dispatch({type: "ADD_USER", user: response.user})
+            }
         });
     };
 };
@@ -48,7 +53,6 @@ export const userLogin = (data) =>{
 export const userLogout = () =>{
     return (dispatch) =>{
         console.log('loggin out')
-        localStorage.clear();
         dispatch({type: "LOGOUT_USER"});
     }
 }

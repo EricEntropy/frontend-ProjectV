@@ -3,6 +3,8 @@ const RootReducer = (
         loading: false,
         signedup: false,
         user: 0,
+        token: localStorage.jwt,
+        failedlogin: false,
     }, action) => {
     
     switch(action.type){
@@ -23,8 +25,19 @@ const RootReducer = (
                 user: action.user
             };
 
+        case "FAILED_USER":
+            return{
+                ...state,
+                signedup: false, 
+                failedlogin: true,
+            };
+
         case "LOGOUT_USER":
-            return state;
+            localStorage.clear();
+            return {
+                ...state,
+                signedup: false,
+            }
     };
 };
 

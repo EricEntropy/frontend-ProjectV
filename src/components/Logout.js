@@ -12,7 +12,7 @@ class Logout extends React.Component{
     
 
     render(){
-        if(this.props.signedup){
+        if(this.props.signedup === false){
             return <Redirect to="/login" />;
         } else{
         return(
