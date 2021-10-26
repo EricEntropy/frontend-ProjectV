@@ -30,7 +30,8 @@ class Posts extends React.Component {
     };
 
     componentDidMount(){
-        this.props.userGetPosts(this.props.user.id)
+        if(this.props.getPosts === false){
+        this.props.userGetPosts(this.props.user.id)}
     }
 
     render() {
@@ -68,7 +69,8 @@ const mapStateToProps = (state) => {
       user: state.user,
       signedup: state.signedup,
       postSuccess: state.postSuccess,
-      posts: state.posts
+      posts: state.posts,
+      getPosts: state.getPosts
     };
   };
 

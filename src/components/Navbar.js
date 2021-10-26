@@ -44,6 +44,14 @@ class Navbar extends React.Component{
                     </NavLink>
 
                     <NavLink
+                    to="/post"
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                    Posts
+                    </NavLink>
+
+                    <NavLink
                     to="/logout"
                     exact
                     style={link}

@@ -5,11 +5,10 @@ class Post extends React.Component {
     console.log(this.props)
     const postList = this.props.posts.map((post) => {
       return(
-        <div>
-          <li>
+        <div >
             <h3>{post.title}</h3>
             <p>{post.content}</p>
-          </li>
+            <hr/>
         </div>
       )
     })

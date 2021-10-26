@@ -43,6 +43,7 @@ export const userLogin = (data) =>{
                 dispatch({type: "FAILED_USER"})
             } else{
                 localStorage.setItem("jwt", response.jwt);
+                localStorage.setItem("user_id", response.user);
                 dispatch({type: "ADD_USER", user: response.user})
             }
         });

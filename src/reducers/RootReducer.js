@@ -4,6 +4,7 @@ const RootReducer = (
         signedup: false,
         user: 0,
         posts: [],
+        getPosts: false,
         postSuccess: false,
         token: localStorage.jwt,
         failedlogin: false,
@@ -34,11 +35,19 @@ const RootReducer = (
                 failedlogin: true,
             };
 
+        case "PERSIST_USER":
+        return{
+            ...state,
+            signedup: true, 
+        };
+
         case "LOGOUT_USER":
             localStorage.clear();
             return {
                 ...state,
                 signedup: false,
+                getPosts: false,
+                posts: []
             }
         
         case "ADD_POST":
@@ -55,7 +64,8 @@ const RootReducer = (
         case "GET_POSTS":
             return {
                 ...state,
-                posts: [...state.posts, action.post]
+                posts: [...state.posts, action.post],
+                getPosts: true
             }
     };
 };
