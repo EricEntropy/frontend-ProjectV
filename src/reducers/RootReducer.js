@@ -51,6 +51,12 @@ const RootReducer = (
                 postSuccess: true,
                 posts: [...state.posts, post]
             };
+
+        case "GET_POSTS":
+            return {
+                ...state,
+                posts: [...state.posts, action.post]
+            }
     };
 };
 

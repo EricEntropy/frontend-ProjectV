@@ -78,3 +78,31 @@ export const userPost = (postData) =>{
         })
     };
 }
+
+export const userGetPosts = (user_id) =>{
+    return (dispatch) =>{
+        dispatch({type: "LOADING_USER"});
+
+        const token = localStorage.getItem("jwt");
+        const configuration = {
+            method: 'GET', 
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            }
+        };
+        fetch(`http://localhost:4000/users/${user_id}/posts`, configuration)
+        .then((resp) => resp.json())
+        .then((response) => {
+            response.map((post) => {
+                const fetchedPost = {
+                    title: post.title,
+                    content: post.content
+                }
+            dispatch({type: "GET_POSTS", post: fetchedPost})
+            })
+        })
+    };
+};
+

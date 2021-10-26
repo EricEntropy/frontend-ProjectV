@@ -1,5 +1,5 @@
 import React from "react";
-import { userLogin } from "../actions/UserActions";
+import {  userLogin } from "../actions/UserActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
@@ -24,6 +24,7 @@ class Login extends React.Component{
           [event.target.id]: event.target.value
         })
     };
+
 
     render(){
         if(this.props.signedup){

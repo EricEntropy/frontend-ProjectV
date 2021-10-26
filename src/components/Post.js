@@ -3,11 +3,20 @@ import React from "react";
 class Post extends React.Component {
   render() {
     console.log(this.props)
-
-    return (
+    const postList = this.props.posts.map((post) => {
+      return(
         <div>
-           <h1> posts </h1>
+          <li>
+            <h3>{post.title}</h3>
+            <p>{post.content}</p>
+          </li>
         </div>
+      )
+    })
+    return (
+        <ul>
+          {postList}
+        </ul>
     )
   }
 }

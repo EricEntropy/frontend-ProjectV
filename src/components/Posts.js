@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { userPost } from "../actions/UserActions";
+import { userPost, userGetPosts } from "../actions/UserActions";
 import { Redirect } from "react-router";
 
 class Posts extends React.Component {
@@ -28,6 +28,10 @@ class Posts extends React.Component {
           [event.target.id]: event.target.value
         })
     };
+
+    componentDidMount(){
+        this.props.userGetPosts(this.props.user.id)
+    }
 
     render() {
         if(this.props.postSuccess && this.state.redirect){
@@ -71,6 +75,7 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = (dispatch) =>{
     return{
         userPost: (data) => dispatch(userPost(data)),
+        userGetPosts: (user_id) => dispatch(userGetPosts(user_id))
     };
 };
 
