@@ -27,7 +27,7 @@ class Login extends React.Component{
 
 
     render(){
-        if(this.props.signedup){
+        if(this.props.signedup && this.props.user){
             return <Redirect to="/" />;
         } else{
         return(

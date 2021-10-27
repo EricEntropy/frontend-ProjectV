@@ -12,6 +12,8 @@ const link = {
 
 class Navbar extends React.Component{
     render(){
+        console.log(this.props.user)
+
         if(this.props.signedup === false){
             return(
                 <div>
@@ -49,6 +51,14 @@ class Navbar extends React.Component{
                     style={link}
                     activeStyle={{background: "red"}}>
                     My Posts
+                    </NavLink>
+
+                    <NavLink
+                    to={`/user/${this.props.user.username}`}
+                    exact
+                    style={link}
+                    activeStyle={{background: "red"}}>
+                    My Profile
                     </NavLink>
 
                     <NavLink

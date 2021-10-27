@@ -42,8 +42,10 @@ export const userLogin = (data) =>{
                 window.alert(response.message);
                 dispatch({type: "FAILED_USER"})
             } else{
+                debugger
                 localStorage.setItem("jwt", response.jwt);
-                localStorage.setItem("user_id", response.user);
+                localStorage.setItem("user_id", response.user.id);
+                localStorage.setItem("username", response.user.username);
                 dispatch({type: "ADD_USER", user: response.user})
             }
         });
@@ -75,7 +77,12 @@ export const userPost = (postData) =>{
         fetch(`http://localhost:4000/users/${postData.user_id}/posts`, configuration)
         .then((resp) => resp.json())
         .then((response) => {
-            dispatch({type: "ADD_POST", post: response})
+            const newPost = {
+                title: response.title,
+                content: response.content,
+                id: response.id
+            }
+            dispatch({type: "ADD_POST", post: newPost})
         })
     };
 }
@@ -99,11 +106,19 @@ export const userGetPosts = (user_id) =>{
             response.map((post) => {
                 const fetchedPost = {
                     title: post.title,
-                    content: post.content
+                    content: post.content,
+                    id: post.id
                 }
             dispatch({type: "GET_POSTS", post: fetchedPost})
             })
         })
     };
 };
+
+export const userDeletePost = () =>{
+    return (dispatch) =>{
+        console.log("deleting post");
+        dispatch({type: "DELETE_POST"})
+    }
+}
 

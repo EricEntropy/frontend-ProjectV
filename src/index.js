@@ -9,10 +9,15 @@ import RootReducer from "./reducers/RootReducer"
 const store = createStore(RootReducer, applyMiddleware(thunk));
 
 const token = localStorage.getItem('jwt');
-const user = localStorage.getItem('user_id');
+const username = localStorage.getItem('username');
+const user_id = localStorage.getItem('user_id');
+const user = {
+  username: username,
+  user_id: user_id  
+}
 
-if(token && user){
-  store.dispatch({type: "PERSIST_USER"})
+if(token && username && user_id){
+  store.dispatch({type: "PERSIST_USER", user: user})
 }
 
 ReactDOM.render(

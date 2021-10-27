@@ -2,7 +2,7 @@ const RootReducer = (
     state = {
         loading: false,
         signedup: false,
-        user: 0,
+        user: {},
         posts: [],
         getPosts: false,
         postSuccess: false,
@@ -39,6 +39,7 @@ const RootReducer = (
         return{
             ...state,
             signedup: true, 
+            user: action.user
         };
 
         case "LOGOUT_USER":
@@ -47,18 +48,15 @@ const RootReducer = (
                 ...state,
                 signedup: false,
                 getPosts: false,
-                posts: []
+                posts: [],
+                user: {}
             }
         
         case "ADD_POST":
-            const post = {
-                title: action.post.title,
-                content: action.post.content
-            };
             return{
                 ...state,
                 postSuccess: true,
-                posts: [...state.posts, post]
+                posts: [...state.posts, action.post]
             };
 
         case "GET_POSTS":

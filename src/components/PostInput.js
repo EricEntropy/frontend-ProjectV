@@ -36,11 +36,11 @@ class PostInput extends React.Component {
 
     render() {
         if(this.props.postSuccess && this.state.redirect){
-            return <Redirect to="/post" />;
+            return <Redirect to="/posts" />;
         } else{
         return (
             <form onSubmit={this.handleSubmit}>
-                    <h1>New post</h1>
+                    <h3>Create a new Post:</h3>
                     <div>
                         <input 
                         type="text"
@@ -48,6 +48,7 @@ class PostInput extends React.Component {
                         onChange={this.handleChange}
                         placeholder="Title"/>
                     </div>
+                    <br/>
                     <div>
                         <input 
                         type="text"
