@@ -1,10 +1,10 @@
 import React from "react";
-import Posts from "../components/Posts"
+import PostInput from "./PostInput"
 
 
 class Home extends React.Component {
   render() {
-    return <Posts/>;
+    return <PostInput/>;
   }
 }
 

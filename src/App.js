@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Logout from "./components/Logout"
 import Welcome from "./components/Welcome"
-import Post from './components/Post';
-
+import Posts from './components/Posts';
+import './App.css'
 
 class App extends Component {
   render() {
@@ -20,10 +20,10 @@ class App extends Component {
     if (localStorage.jwt && this.props.signedup === true){
       return (
         <Router>
-          <div>
+          <div className="App">
           <Navbar signedup={this.props.signedup}/>
             <Switch>
-              <Route exact path="/post" render={() => <Post posts={this.props.posts} getPosts={this.props.getPosts}/>}/>
+              <Route exact path="/posts" render={() => <Posts posts={this.props.posts} getPosts={this.props.getPosts}/>}/>
               <Route exact path="/" component={HomeContainer } />
               <Route exact path="/logout" component={Logout} signedup={this.props.signedup} />
               </Switch>
@@ -33,7 +33,7 @@ class App extends Component {
     } else if(this.props.signedup === false ){
       return(
         <Router>
-        <div>
+        <div className="App">
           <Navbar signedup={this.props.signedup}/>
           <Welcome/>
           <Route exact path="/login" component={LoginContainer} />

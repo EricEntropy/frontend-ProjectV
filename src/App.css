@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color:lavender;
 }
 
 .App-logo {
@@ -36,3 +37,13 @@
     transform: rotate(360deg);
   }
 }
+
+.post{
+  text-align: center;
+  border: 1px solid ;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px ;
+}
+
+

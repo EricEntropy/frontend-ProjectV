@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const link = {
     width: "100px",
     padding: "12px",
-    margin: "0 6px 6px",
+    margin: "6px 6px 6px",
     background: "blue",
     textDecoration: "none",
     color: "white",
@@ -44,11 +44,11 @@ class Navbar extends React.Component{
                     </NavLink>
 
                     <NavLink
-                    to="/post"
+                    to="/posts"
                     exact
                     style={link}
                     activeStyle={{background: "red"}}>
-                    Posts
+                    My Posts
                     </NavLink>
 
                     <NavLink
