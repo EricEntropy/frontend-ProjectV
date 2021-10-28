@@ -7,7 +7,7 @@ class UserContainer extends Component{
         console.log(this.props)
         return(
             <div>
-                <User/>
+                <User user={this.props.user} totalPosts={this.props.totalPosts}/>
             </div>
         )
     }

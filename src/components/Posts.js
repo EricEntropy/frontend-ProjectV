@@ -4,7 +4,7 @@ import {  userDeletePost } from "../actions/UserActions";
 
 class Posts extends React.Component {
 
-  handleSubmit = (e) =>{
+  handleDelete = (e) =>{
 
     e.preventDefault();
     const post_id = parseInt(e.target.id, 10)
@@ -15,10 +15,10 @@ class Posts extends React.Component {
     console.log(this.props)
     const postList = this.props.posts.map((post) => {
       return(
-        <div className="post" id={post.id}>
+        <div className="post" id={post.id} key={post.id}>
             <h3 className="post-title">{post.title}</h3>
             <p>{post.content}</p>
-            <button onClick={this.handleSubmit} id={post.id}> X </button>
+            <button onClick={this.handleDelete} id={post.id}> X </button>
         </div>
       )
     })

@@ -40,7 +40,8 @@ class PostInput extends React.Component {
             return <Redirect to="/posts" render={<Posts userDeletePost={this.props.userDeletePost}/>}/>;
         } else{
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div className="post-input">
+            <form onSubmit={this.handleSubmit} >
                     <h3>Create a new Post:</h3>
                     <div>
                         <input 
@@ -62,6 +63,7 @@ class PostInput extends React.Component {
                     type="submit" 
                     value="Create Post"/>
                 </form>
+                </div>
         );
         }
     }
