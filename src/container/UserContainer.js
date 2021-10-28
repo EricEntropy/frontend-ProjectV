@@ -4,6 +4,7 @@ import User from "../components/User"
 class UserContainer extends Component{
 
     render(){
+        console.log(this.props)
         return(
             <div>
                 <User/>

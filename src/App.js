@@ -24,7 +24,7 @@ class App extends Component {
           <div className="App">
           <Navbar signedup={this.props.signedup} user={this.props.user}/>
             <Switch>
-              <Route exact path="/posts" render={() => <Posts posts={this.props.posts} getPosts={this.props.getPosts}/>}/>
+              <Route exact path="/posts" render={() => <Posts user={this.props.user} posts={this.props.posts} getPosts={this.props.getPosts}/>}/>
               <Route exact path="/" component={HomeContainer} />
               <Route exact path={`/user/${this.props.user.username}`} render={() => <UserContainer user={this.props.user}/>}/>
               <Route exact path="/logout" component={Logout} signedup={this.props.signedup} />

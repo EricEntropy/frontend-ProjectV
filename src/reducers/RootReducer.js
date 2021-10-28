@@ -65,6 +65,14 @@ const RootReducer = (
                 posts: [...state.posts, action.post],
                 getPosts: true
             }
+
+        case "DELETE_POST":
+            const postsToStay = state.posts.filter(post => post.id !== action.id)
+            debugger
+            return{
+                ...state,
+                posts: postsToStay
+            }
     };
 };
 

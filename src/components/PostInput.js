@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { userPost, userGetPosts } from "../actions/UserActions";
+import { userPost, userGetPosts, userDeletePost } from "../actions/UserActions";
 import { Redirect } from "react-router";
+import Posts from "./Posts";
 
 class PostInput extends React.Component {
     state = {
@@ -36,7 +37,7 @@ class PostInput extends React.Component {
 
     render() {
         if(this.props.postSuccess && this.state.redirect){
-            return <Redirect to="/posts" />;
+            return <Redirect to="/posts" render={<Posts userDeletePost={this.props.userDeletePost}/>}/>;
         } else{
         return (
             <form onSubmit={this.handleSubmit}>
@@ -79,7 +80,8 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = (dispatch) =>{
     return{
         userPost: (data) => dispatch(userPost(data)),
-        userGetPosts: (user_id) => dispatch(userGetPosts(user_id))
+        userGetPosts: (user_id) => dispatch(userGetPosts(user_id)),
+        userDeletePost: (user_id, post_id) => dispatch(userDeletePost(user_id, post_id)),
     };
 };
 

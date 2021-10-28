@@ -37,12 +37,10 @@ export const userLogin = (data) =>{
         fetch("http://localhost:4000/login", configuration)
         .then((resp) => resp.json())
         .then((response) => {
-            
             if(response.message === "Invalid username or password"){
                 window.alert(response.message);
                 dispatch({type: "FAILED_USER"})
             } else{
-                debugger
                 localStorage.setItem("jwt", response.jwt);
                 localStorage.setItem("user_id", response.user.id);
                 localStorage.setItem("username", response.user.username);
@@ -115,10 +113,20 @@ export const userGetPosts = (user_id) =>{
     };
 };
 
-export const userDeletePost = () =>{
+export const userDeletePost = (user_id, post_id) =>{
     return (dispatch) =>{
         console.log("deleting post");
-        dispatch({type: "DELETE_POST"})
+        const token = localStorage.getItem("jwt");
+        const configuration = {
+            method: 'DELETE', 
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            }
+        };
+        fetch(`http://localhost:4000/users/${user_id}/posts/${post_id}`, configuration)
+        dispatch({type: "DELETE_POST", id: post_id})
     }
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import {  userLogin } from "../actions/UserActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
+import Home from "./Home";
 
 class Login extends React.Component{
     state = {
@@ -25,10 +26,12 @@ class Login extends React.Component{
         })
     };
 
-
     render(){
-        if(this.props.signedup && this.props.user){
-            return <Redirect to="/" />;
+        console.log(this.props)
+        // const token = localStorage.getItem('jwt');
+//need to figure out how to redirect to home
+        if(this.props.signedup){
+            return <Redirect to="/" render={<Home/>}/>;
         } else{
         return(
             <form onSubmit={this.handleSubmit}>
@@ -60,6 +63,7 @@ const mapStateToProps = (state) => {
     return{
       user: state.user,
       signedup: state.signedup,
+      token: state.token,
     };
   };
   
