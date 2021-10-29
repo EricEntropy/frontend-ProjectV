@@ -61,11 +61,12 @@ const RootReducer = (
             };
 
         case "UPDATE_POST":
-            //have to find edited post remove and update 
+            const currentPosts = state.posts.filter(post => post.id != action.post.id)
+            currentPosts.push(action.post);
             return{
                 ...state,
                 postUpdate: true,
-                posts: [...state.posts, action.post]
+                posts: currentPosts
             };
 
         case "GET_POSTS":

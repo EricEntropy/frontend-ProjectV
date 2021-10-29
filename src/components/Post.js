@@ -6,10 +6,11 @@ import {  userDeletePost, userEditPost } from "../actions/UserActions";
 class Post extends React.Component {
 
     state = {
-        title: "",
-        content: "",
+        title: this.props.location.state.title,
+        content: this.props.location.state.content,
         doneEdit: false,
-        doneDelete: false
+        doneDelete: false,
+        doneUpdate: false,
     }
 
     handleDelete = (e) =>{
@@ -28,6 +29,9 @@ class Post extends React.Component {
                 content: this.state.content
             }
         this.props.userEditPost(this.props.location.state.id, this.props.match.params.postID, updatedPost)
+        this.setState({
+            doneUpdate: true
+        })
         }
       }
 
@@ -42,7 +46,7 @@ class Post extends React.Component {
     render() {
         const postData = this.props.location.state;
         console.log(this.state)
-        if(this.state.doneDelete){
+        if(this.state.doneDelete || this.state.doneUpdate){
             return <Redirect to="/"/>
         }
         return(
