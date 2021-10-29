@@ -130,3 +130,31 @@ export const userDeletePost = (user_id, post_id) =>{
     }
 }
 
+export const userEditPost = (user_id, post_id, postData) => {
+    return (dispatch) =>{
+        console.log("editting post");
+        const token = localStorage.getItem("jwt");
+        const configuration = {
+            method: 'PATCH', 
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(postData.post)
+
+        };
+
+        fetch(`http://localhost:4000/users/${user_id}/posts/${post_id}`, configuration)
+        .then((resp) => resp.json())
+        .then((response) => {
+                const updatedPost = {
+                    title: response.title,
+                    content: response.content,
+                    id: response.id
+                }
+                dispatch({type: "UPDATE_POST", post: updatedPost})
+            })
+    }
+}
+

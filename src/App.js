@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import Logout from "./components/Logout"
 import Welcome from "./components/Welcome"
 import Posts from './components/Posts';
+import Post from './components/Post'
 import './App.css'
 import UserContainer from './container/UserContainer';
 
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/" component={HomeContainer} />
               <Route exact path={`/user/${this.props.user.username}`} render={() => <UserContainer user={this.props.user} totalPosts={this.props.posts.length}/>}/>
               <Route exact path="/logout" component={Logout} signedup={this.props.signedup} />
+              < Route exact path="/posts/:postID" component={Post} />
               </Switch>
           </div>
           </Router>

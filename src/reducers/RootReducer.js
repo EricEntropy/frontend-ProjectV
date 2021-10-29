@@ -8,6 +8,7 @@ const RootReducer = (
         postSuccess: false,
         token: localStorage.jwt,
         failedlogin: false,
+        postUpdate: false,
     }, action) => {
     
     switch(action.type){
@@ -56,6 +57,13 @@ const RootReducer = (
             return{
                 ...state,
                 postSuccess: true,
+                posts: [...state.posts, action.post]
+            };
+
+        case "UPDATE_POST":
+            return{
+                ...state,
+                postUpdate: true,
                 posts: [...state.posts, action.post]
             };
 

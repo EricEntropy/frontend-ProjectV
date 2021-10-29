@@ -42,7 +42,7 @@ class PostInput extends React.Component {
         return (
             <div className="post-input">
             <form onSubmit={this.handleSubmit} >
-                    <h3>Create a new Post:</h3>
+                    <h3>Create a New Post:</h3>
                     <div>
                         <input 
                         type="text"

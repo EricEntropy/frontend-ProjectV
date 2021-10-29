@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import RootReducer from "./reducers/RootReducer"
-
+import "./index.css"
 const store = createStore(RootReducer, applyMiddleware(thunk));
 
 const token = localStorage.getItem('jwt');

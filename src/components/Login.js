@@ -7,7 +7,8 @@ import Home from "./Home";
 class Login extends React.Component{
     state = {
         username: "",
-        password: ""
+        password: "",
+        loggedin: false
       }
 
       handleSubmit =(event) =>{
@@ -18,6 +19,9 @@ class Login extends React.Component{
                 password: this.state.password
         }};
         this.props.userLogin(data);
+        this.setState({
+            loggedin: true
+        });
     };
 
     handleChange = event => {
@@ -28,9 +32,7 @@ class Login extends React.Component{
 
     render(){
         console.log(this.props)
-        // const token = localStorage.getItem('jwt');
-//need to figure out how to redirect to home
-        if(this.props.signedup){
+        if(this.state.loggedin){
             return <Redirect to="/" render={<Home/>}/>;
         } else{
         return(
@@ -63,7 +65,6 @@ const mapStateToProps = (state) => {
     return{
       user: state.user,
       signedup: state.signedup,
-      token: state.token,
     };
   };
   
