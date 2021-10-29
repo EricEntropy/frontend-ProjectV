@@ -61,6 +61,7 @@ const RootReducer = (
             };
 
         case "UPDATE_POST":
+            //have to find edited post remove and update 
             return{
                 ...state,
                 postUpdate: true,
@@ -75,7 +76,7 @@ const RootReducer = (
             }
 
         case "DELETE_POST":
-            const postsToStay = state.posts.filter(post => post.id !== action.id)
+            const postsToStay = state.posts.filter(post => post.id == action.id)
             debugger
             return{
                 ...state,

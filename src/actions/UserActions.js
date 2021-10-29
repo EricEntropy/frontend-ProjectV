@@ -141,7 +141,7 @@ export const userEditPost = (user_id, post_id, postData) => {
                 'Accept': "application/json",
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(postData.post)
+            body: JSON.stringify(postData)
 
         };
 

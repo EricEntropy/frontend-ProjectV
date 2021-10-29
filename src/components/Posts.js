@@ -4,10 +4,6 @@ import {  userDeletePost, userEditPost } from "../actions/UserActions";
 import { Link } from "react-router-dom";
 
 class Posts extends React.Component {
-  
-  state ={
-    redirectToManagePost: false,
-  }
 
   handleDelete = (e) =>{
     e.preventDefault();
@@ -22,7 +18,6 @@ class Posts extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const postList = this.props.posts.map((post) => {
       return(
         <div className="post" id={post.id} key={post.id}>
