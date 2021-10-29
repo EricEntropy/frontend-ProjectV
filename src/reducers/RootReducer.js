@@ -76,8 +76,7 @@ const RootReducer = (
             }
 
         case "DELETE_POST":
-            const postsToStay = state.posts.filter(post => post.id == action.id)
-            debugger
+            const postsToStay = state.posts.filter(post => post.id != action.id)
             return{
                 ...state,
                 posts: postsToStay
