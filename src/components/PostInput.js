@@ -53,7 +53,7 @@ class PostInput extends React.Component {
                     </div>
                     <br/>
                     <div>
-                        <input 
+                        <textarea 
                         type="text"
                         id="content"
                         onChange={this.handleChange}

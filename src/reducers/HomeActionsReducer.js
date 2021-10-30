@@ -9,11 +9,10 @@ const HomeActionsReducer = (
                 return state;
             
             case "GET_ALL_POSTS":
-                const currentAllPosts =state.allPosts.filter(post => post.id != action.post.id);
-                currentAllPosts.push(action.post);
+                debugger
                 return {
                     ...state,
-                    allPosts: currentAllPosts,
+                    allPosts: action.posts,
                 }
 
             case "GET_ALL_POSTS_DONE":
