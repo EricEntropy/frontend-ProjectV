@@ -78,10 +78,12 @@ export const userPost = (postData) =>{
             const newPost = {
                 title: response.title,
                 content: response.content,
-                id: response.id
+                id: response.id,
+                likes: 1
             }
             dispatch({type: "ADD_POST", post: newPost})
         })
+        dispatch({type: "GET_ALL_POSTS_PENDING"})
     };
 }
 
@@ -105,7 +107,8 @@ export const userGetPosts = (user_id) =>{
                 const fetchedPost = {
                     title: post.title,
                     content: post.content,
-                    id: post.id
+                    id: post.id,
+                    likes: post.likes
                 }
             dispatch({type: "GET_POSTS", post: fetchedPost})
             })
@@ -127,6 +130,7 @@ export const userDeletePost = (user_id, post_id) =>{
         };
         fetch(`http://localhost:4000/users/${user_id}/posts/${post_id}`, configuration)
         dispatch({type: "DELETE_POST", id: post_id})
+        dispatch({type: "GET_ALL_POSTS_PENDING"})
     }
 }
 
@@ -142,7 +146,6 @@ export const userEditPost = (user_id, post_id, postData) => {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(postData)
-
         };
 
         fetch(`http://localhost:4000/users/${user_id}/posts/${post_id}`, configuration)
@@ -151,10 +154,12 @@ export const userEditPost = (user_id, post_id, postData) => {
                 const updatedPost = {
                     title: response.title,
                     content: response.content,
-                    id: response.id
+                    id: response.id,
+                    likes: response.likes
                 }
                 dispatch({type: "UPDATE_POST", post: updatedPost})
             })
+        dispatch({type: "GET_ALL_POSTS_PENDING"})
     }
 }
 

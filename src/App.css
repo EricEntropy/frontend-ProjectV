@@ -69,3 +69,25 @@
 .delete-btn{
   background-color: red;
 }
+
+.upvote{
+  padding: 3px;
+  border-radius: 50px;
+  font-size: 10px;
+  border: 2px solid;
+}
+
+.upvote:hover{
+  background-color: seagreen;
+}
+
+.downvote{
+  padding: 3px;
+  border-radius: 50px;
+  font-size: 10px;
+  border: 2px solid;
+}
+
+.downvote:hover{
+  background-color:tomato;
+}

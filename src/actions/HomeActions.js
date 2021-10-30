@@ -17,7 +17,8 @@ export const homeGetAllPosts = () =>{
                 const fetchedPost = {
                     title: post.title,
                     content: post.content,
-                    id: post.id
+                    id: post.id,
+                    likes: post.likes
                 }
             dispatch({type: "GET_ALL_POSTS", post: fetchedPost})
             })

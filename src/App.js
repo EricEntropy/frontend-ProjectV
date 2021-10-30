@@ -25,7 +25,7 @@ class App extends Component {
           <Navbar signedup={this.props.signedup} user={this.props.user}/>
             <Switch>
               <Route exact path="/posts" render={() => <Posts user={this.props.user} posts={this.props.posts} getPosts={this.props.getPosts}/>}/>
-              <Route exact path="/" component={HomeContainer} />
+              <Route exact path="/" render={() => <HomeContainer allPostsReceived={this.props.allPostsReceived}/>}/>
               <Route exact path={`/user/${this.props.user.username}`} render={() => <UserContainer user={this.props.user} totalPosts={this.props.posts.length}/>}/>
               <Route exact path="/logout" component={Logout} signedup={this.props.signedup} />
               < Route exact path="/posts/:postID" component={Post} />
@@ -54,7 +54,8 @@ const mapStateToProps = (state) => {
     signedup: state.UserReducer.signedup,
     postSuccess: state.UserReducer.postSuccess,
     posts: state.UserReducer.posts,
-    getPosts: state.UserReducer.getPosts
+    getPosts: state.UserReducer.getPosts,
+    allPostsReceived: state.HomeActionsReducer.allPostsReceived
   };
 };
 

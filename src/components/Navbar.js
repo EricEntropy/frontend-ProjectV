@@ -12,8 +12,6 @@ const link = {
 
 class Navbar extends React.Component{
     render(){
-        console.log(this.props.user)
-
         if(this.props.signedup === false){
             return(
                 <div>

@@ -17,7 +17,8 @@ class PostInput extends React.Component {
             user_id: this.props.user.id,
             post: {
                 title: this.state.title,
-                content: this.state.content
+                content: this.state.content,
+                likes: 1
         }};
         this.props.userPost(data);
         this.setState({ redirect: true})
