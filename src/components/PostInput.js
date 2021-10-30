@@ -71,11 +71,11 @@ class PostInput extends React.Component {
 
 const mapStateToProps = (state) => {
     return{
-      user: state.user,
-      signedup: state.signedup,
-      postSuccess: state.postSuccess,
-      posts: state.posts,
-      getPosts: state.getPosts
+      user: state.UserReducer.user,
+      signedup: state.UserReducer.signedup,
+      postSuccess: state.UserReducer.postSuccess,
+      posts: state.UserReducer.posts,
+      getPosts: state.UserReducer.getPosts
     };
   };
 

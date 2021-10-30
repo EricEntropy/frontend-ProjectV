@@ -17,7 +17,6 @@ class App extends Component {
     console.log(this.props.posts);
     console.log(this.props.signedup);
     console.log(this.props.user);
-    
 
     if (localStorage.jwt && this.props.signedup === true){
       return (
@@ -51,11 +50,11 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return{
-    user: state.user,
-    signedup: state.signedup,
-    postSuccess: state.postSuccess,
-    posts: state.posts,
-    getPosts: state.getPosts
+    user: state.UserReducer.user,
+    signedup: state.UserReducer.signedup,
+    postSuccess: state.UserReducer.postSuccess,
+    posts: state.UserReducer.posts,
+    getPosts: state.UserReducer.getPosts
   };
 };
 

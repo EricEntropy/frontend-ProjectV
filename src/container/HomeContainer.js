@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostInput from "../components/PostInput"
+import AllPosts from "../components/AllPosts"
 
 class HomeContainer extends Component{
 
@@ -7,6 +8,7 @@ class HomeContainer extends Component{
         return(
             <div>
                 <PostInput/>
+                <AllPosts/>
             </div>
         )
     }

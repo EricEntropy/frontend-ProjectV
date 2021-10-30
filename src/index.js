@@ -4,8 +4,13 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import RootReducer from "./reducers/RootReducer"
+import UserReducer from "./reducers/UserReducer"
+import HomeActionsReducer from "./reducers/HomeActionsReducer"
 import "./index.css"
+import { combineReducers } from "redux";
+import RootReducer from './reducers/RootReducer';
+
+
 const store = createStore(RootReducer, applyMiddleware(thunk));
 
 const token = localStorage.getItem('jwt');
