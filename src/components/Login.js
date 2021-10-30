@@ -2,7 +2,6 @@ import React from "react";
 import {  userLogin } from "../actions/UserActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
-import Home from "./Home";
 
 class Login extends React.Component{
     state = {
@@ -33,7 +32,7 @@ class Login extends React.Component{
     render(){
         console.log(this.props)
         if(this.state.loggedin){
-            return <Redirect to="/" render={<Home/>}/>;
+            return <Redirect to="/" />;
         } else{
         return(
             <form onSubmit={this.handleSubmit}>

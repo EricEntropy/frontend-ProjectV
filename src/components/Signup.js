@@ -7,7 +7,8 @@ class Signup extends React.Component{
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        redirecttoHome: false
       }
 
     handleSubmit =(event) =>{
@@ -18,6 +19,9 @@ class Signup extends React.Component{
                 password: this.state.password
         }};
         this.props.userActions(data);
+        this.setState({
+            redirecttoHome: true
+        })
     };
 
     handleChange = event => {
@@ -27,7 +31,7 @@ class Signup extends React.Component{
     };
 
     render(){
-        if(this.props.signedup){
+        if(this.state.redirecttoHome){
             return <Redirect to="/" />;
         } else{
             return(

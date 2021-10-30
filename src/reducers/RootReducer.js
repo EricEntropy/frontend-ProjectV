@@ -64,7 +64,6 @@ const RootReducer = (
             const currentPosts = state.posts.filter(post => post.id != action.post.id)
             currentPosts.push(action.post);
             currentPosts.sort(function(a, b){return a.id - b.id});
-            debugger
             return{
                 ...state,
                 postUpdate: true,

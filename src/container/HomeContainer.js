@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Home from "../components/Home"
+import PostInput from "../components/PostInput"
 
 class HomeContainer extends Component{
 
     render(){
         return(
             <div>
-                <Home/>
+                <PostInput/>
             </div>
         )
     }
