@@ -19,8 +19,9 @@ export const homeGetAllPosts = () =>{
                     content: post.content,
                     id: post.id
                 }
-            dispatch({type: "GET_POSTS", post: fetchedPost})
-            });
-        });
+            dispatch({type: "GET_ALL_POSTS", post: fetchedPost})
+            })
+            dispatch({type: "GET_ALL_POSTS_DONE"})
+        })
     }
 }
