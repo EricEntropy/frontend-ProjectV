@@ -23,6 +23,8 @@ class Posts extends React.Component {
         <div className="post" id={post.id} key={post.id}>
             <h3 className="post-title">{post.title}</h3>
             <p>{post.content}</p>
+            Number of Votes: <b>{post.likes}</b>
+            <br/>
             <Link 
             key={post.id}
             to={{
@@ -33,13 +35,16 @@ class Posts extends React.Component {
         </div>
       )
     });
-
+    if(this.props.posts.length === 0 ){
+      return <div> <nr/> <h1> No Posts Yet :(</h1></div>
+    } else{
     return (
         <div>
           <br/>
           {postList}
         </div>
     )
+    }
   }
 }
 

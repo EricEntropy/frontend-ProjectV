@@ -136,7 +136,6 @@ export const userDeletePost = (user_id, post_id) =>{
 
 export const userEditPost = (user_id, post_id, postData) => {
     return (dispatch) =>{
-        console.log("editting post");
         const token = localStorage.getItem("jwt");
         const configuration = {
             method: 'PATCH', 

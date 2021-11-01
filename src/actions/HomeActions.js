@@ -18,3 +18,24 @@ export const homeGetAllPosts = () =>{
             dispatch({type: "GET_ALL_POSTS_DONE"})
     }
 }
+
+// export const UpvotePost = (user_id, post_id, postData) =>{
+//     return (dispatch) =>{
+//         const token = localStorage.getItem("jwt");
+//         const configuration = {
+//             method: 'PATCH', 
+//             headers: {
+//                 'Content-Type': "application/json",
+//                 'Accept': "application/json",
+//                 'Authorization': `Bearer ${token}`
+//             },
+//             body: JSON.stringify(postData)
+//         };
+
+//     }
+// }
+
+// export const DownvotePost = () =>{
+//     return (dispatch) =>{
+//     }
+// }

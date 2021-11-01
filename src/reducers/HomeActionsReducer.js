@@ -9,7 +9,6 @@ const HomeActionsReducer = (
                 return state;
             
             case "GET_ALL_POSTS":
-                debugger
                 return {
                     ...state,
                     allPosts: action.posts,

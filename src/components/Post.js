@@ -19,7 +19,7 @@ class Post extends React.Component {
         this.setState({
             doneDelete: true
         });
-      }
+      };
     
       handleUpdate = (e) =>{
         e.preventDefault();
@@ -33,7 +33,7 @@ class Post extends React.Component {
             doneUpdate: true
         })
         }
-      }
+      };
 
     handleChange = event => {
         this.setState({

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import ButtonForLikes from "./ButtonForLikes";
 
 class AllPosts extends React.Component {
 
@@ -12,9 +13,7 @@ class AllPosts extends React.Component {
           <div className="post" id={post.id} key={post.id}>
             <h3 className="post-title">{post.title}</h3>
             <p>{post.content}</p>
-            <button className="upvote">Upvote</button>
-            <b>{post.likes}</b>
-            <button className="downvote">Downvote</button>
+            <ButtonForLikes post={post}/>
           </div>
       )}
     )}

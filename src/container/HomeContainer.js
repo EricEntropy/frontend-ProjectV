@@ -12,7 +12,6 @@ class HomeContainer extends Component{
     }
     
     render(){
-        console.log(this.props)
         return(
             <div>
                 <h1>Welcome!</h1> 
